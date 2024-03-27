@@ -6,8 +6,6 @@
 //
 
 import UIKit
-
-// TODO: Pt 1 - Import Parse Swift
 import ParseSwift
 
 @main
@@ -17,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // TODO: Pt 1 - Initialize Parse SDK
-
+        ParseSwift.initialize(applicationId: "27M8kmx34zPD8YKUdt2WXtH0rIGBoRtj8azCz9r8",
+                              clientKey: "sQvty6bmB3wNfXZm2kILjAn2XkorQlbHKpA25iiT",
+                              serverURL: URL(string: "https://parseapi.back4app.com")!)
         // Add the following values from your Parse server.
         // For back4app hosted Parse servers:
         //   - App Settings tab -> Security & Keys -> App Keys -> applicationId + clientKey
