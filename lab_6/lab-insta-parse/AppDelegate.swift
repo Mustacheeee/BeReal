@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+// TODO: Pt 1 - Import Parse Swift
 import ParseSwift
 
 @main
@@ -15,17 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // TODO: Pt 1 - Initialize Parse SDK
-        ParseSwift.initialize(applicationId: "27M8kmx34zPD8YKUdt2WXtH0rIGBoRtj8azCz9r8",
-                              clientKey: "sQvty6bmB3wNfXZm2kILjAn2XkorQlbHKpA25iiT",
-                              serverURL: URL(string: "https://parseapi.back4app.com")!)
+
         // Add the following values from your Parse server.
         // For back4app hosted Parse servers:
         //   - App Settings tab -> Security & Keys -> App Keys -> applicationId + clientKey
         //   - App Settings tab -> App Management -> Parse API Address
         // https://github.com/parse-community/Parse-Swift/blob/main/ParseSwift.playground/Sources/Common.swift
-        ParseSwift.initialize(applicationId: "your_app_id_here",
-                              clientKey: "your_client_key_here",
-                              serverURL: URL(string: "your_parse_api_address_here")!)
+        ParseSwift.initialize(applicationId: "27M8kmx34zPD8YKUdt2WXtH0rIGBoRtj8azCz9r8",
+                              clientKey: "sQvty6bmB3wNfXZm2kILjAn2XkorQlbHKpA25iiT",
+                              serverURL: URL(string: "https://parseapi.back4app.com")!)
 
         // TODO: Pt 1: - Instantiate and save a test parse object to your server
         // https://github.com/parse-community/Parse-Swift/blob/3d4bb13acd7496a49b259e541928ad493219d363/ParseSwift.playground/Pages/1%20-%20Your%20first%20Object.xcplaygroundpage/Contents.swift#L121

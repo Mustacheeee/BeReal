@@ -57,7 +57,29 @@ class PostViewController: UIViewController {
         view.endEditing(true)
 
         // TODO: Pt 1 - Create and save Post
+        // Get the current user
+        if var currentUser = User.current {
 
+            // Update the `lastPostedDate` property on the user with the current date.
+            currentUser.lastPostedDate = Date()
+
+            // Save updates to the user (async)
+            currentUser.save { [weak self] result in
+                switch result {
+                case .success(let user):
+                    print("✅ User Saved! \(user)")
+
+                    // Switch to the main thread for any UI updates
+                    DispatchQueue.main.async {
+                        // Return to previous view controller
+                        self?.navigationController?.popViewController(animated: true)
+                    }
+
+                case .failure(let error):
+                    self?.showAlert(description: error.localizedDescription)
+                }
+            }
+        }
         // Unwrap optional pickedImage
         guard let image = pickedImage,
               // Create and compress image data (jpeg) from UIImage
@@ -123,6 +145,7 @@ class PostViewController: UIViewController {
         present(imagePicker, animated: true)
 
 
+
     }
 
     @IBAction func onViewTapped(_ sender: Any) {
@@ -175,7 +198,6 @@ extension PostViewController: PHPickerViewControllerDelegate {
     }
 }
 
-// TODO: Pt 2 - Add UIImagePickerControllerDelegate + UINavigationControllerDelegate
 extension PostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
